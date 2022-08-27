@@ -32,7 +32,7 @@ class Player(pygame.sprite.Sprite):
     
     def animate(self,dt):
         self.frame_index += 4 * dt
-        if self.frame_index>= len(self.animations[self.status]):
+        if self.frame_index >= len(self.animations[self.status]):
             self.frame_index = 0
 
         self.image = self.animations[self.status][int(self.frame_index)]
@@ -84,6 +84,7 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, dt):
         self.input()
-        self.get_status() # this line causes IndexError: list index out of range
+        self.get_status()
+
         self.move(dt)
         self.animate(dt)
