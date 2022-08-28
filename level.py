@@ -1,9 +1,9 @@
-from this import d
 import pygame
 from settings import *
 from player import Player
 from overlay import Overlay
 from sprites import Generic
+
 class Level:
     def __init__(self):
 
@@ -41,7 +41,7 @@ class CameraGroup(pygame.sprite.Group):
     def custom_draw(self, player):
         self.offset.x = player.rect.centerx - SCREEN_WIDTH / 2
         self.offset.y = player.rect.centery - SCREEN_HEIGHT / 2
-
+        
         for layer in LAYERS.values():
             for sprite in self.sprites():
                 if sprite.z == layer:
