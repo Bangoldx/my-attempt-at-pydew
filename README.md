@@ -1,6 +1,18 @@
-# my-attempt-at-pydew
+#How to run from repo
 
-# Open audio & fixes rar file from GH
-# copy everything but the code folder, These are the project assets
-# folder layout should be project/pydew/audio, code, data, font, graphics/
-# 
+SETUP:
+clone repo into project folder, assest.zip should be extracted 
+to the folder above the code files.
+
+Install pygame using
+"pip3 install pygame" 
+This is what the game runs on
+
+Install pytmx using
+"pip3 install pytmx"
+This is what allows pygame to run .tmx files i.e your map and tilesets
+
+You can expand and add different elements using Tiled by installing using
+sudo snap install tiled
+
+run 'python3 main.py' from your code directory.
