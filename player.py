@@ -55,6 +55,7 @@ class Player(pygame.sprite.Sprite):
         # interation
         self.tree_sprites = tree_sprites
         self.interaction = interaction
+        self.sleep = False
 
     def use_tool(self):
         #print('tool use')
@@ -97,7 +98,7 @@ class Player(pygame.sprite.Sprite):
     def input(self):
         keys = pygame.key.get_pressed()
 
-        if not self.timers['tool use'].active:
+        if not self.timers['tool use'].active and not self.sleep:
             # directions
             if keys[pygame.K_UP]:
                 self.direction.y = -1
@@ -149,8 +150,9 @@ class Player(pygame.sprite.Sprite):
                 if collided_interaction_sprite:
                     if collided_interaction_sprite[0].name == 'Trader':
                         pass
-                else:
-                    self.status = 'left_idle'
+                    else:
+                        self.status = 'left_idle'
+                        self.sleep = True
 
     def get_status(self):
 
