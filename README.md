@@ -1,3 +1,7 @@
+Original project files
+
+https://github.com/clear-code-projects/PyDew-Valley
+
 # SETUP:
 # How to run from repo
 clone repo into project folder, assest.zip should be extracted 
