@@ -2,6 +2,10 @@
 # How to run from repo
 clone repo into project folder, assest.zip should be extracted 
 to the folder above the code files.
+```
+sudo apt install unzip
+unzip assets.zip
+```
 
 Install pygame using
 "pip3 install pygame" 
