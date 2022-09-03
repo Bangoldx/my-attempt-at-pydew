@@ -1,14 +1,17 @@
-# SETUP:
-# How to run from repo
-clone repo into project folder, assest.zip should be extracted 
+# SETUP
+
+## How to run from repo
+
+clone repo into project folder, assest.zip should be extracted
 to the folder above the code files.
-```
+
+```text
 sudo apt install unzip
 unzip assets.zip
 ```
 
 Install pygame using
-"pip3 install pygame" 
+"pip3 install pygame"
 This is what the game runs on
 
 Install pytmx using
@@ -20,7 +23,8 @@ sudo snap install tiled
 
 run 'python3 main.py' from your code directory.
 
-# Controls
+## Controls
+
 Arrow keys move
 Space is use tool
 Q switches tools
