@@ -31,7 +31,7 @@ class Water(Generic):
             groups = groups, 
             z = LAYERS['water'])
 
-    def animate(self,dt):                   # has code for animation, may not work
+    def animate(self,dt):
         self.frame_index += 5 * dt
         if self.frame_index >= len(self.frames):
             self.frame_index = 0
