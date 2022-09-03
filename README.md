@@ -1,6 +1,5 @@
-#How to run from repo
-
-SETUP:
+# SETUP:
+# How to run from repo
 clone repo into project folder, assest.zip should be extracted 
 to the folder above the code files.
 
@@ -16,3 +15,10 @@ You can expand and add different elements using Tiled by installing using
 sudo snap install tiled
 
 run 'python3 main.py' from your code directory.
+
+# Controls
+Arrow keys move
+Space is use tool
+Q switches tools
+LCTRL uses seed
+E switches seeds
