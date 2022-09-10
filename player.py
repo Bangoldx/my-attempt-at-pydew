@@ -4,7 +4,7 @@ from support import *
 from timer import Timer
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, group, collision_sprites, tree_sprites, interaction, soil_layer, toggle_shop):
+    def __init__(self, pos, group, collision_sprites, tree_sprites, interaction, soil_layer, toggle_shop, toggle_pause):
         super().__init__(group)
         
         self.import_assets()
@@ -56,6 +56,11 @@ class Player(pygame.sprite.Sprite):
         }
         self.money = 200
 
+        # pause screen options
+        self.quit = {
+            'Quit': pygame.QUIT
+        }
+
 
         # interation
         self.tree_sprites = tree_sprites
@@ -63,6 +68,7 @@ class Player(pygame.sprite.Sprite):
         self.sleep = False
         self.soil_layer = soil_layer
         self.toggle_shop = toggle_shop
+        self.toggle_pause = toggle_pause
 
         # sound
         self.watering = pygame.mixer.Sound('../audio/water.mp3')
@@ -158,6 +164,9 @@ class Player(pygame.sprite.Sprite):
                 self.seed_index = self.seed_index if self.seed_index < len(self.seeds) else 0
                 self.selected_seed = self.seeds[self.seed_index]
 
+            if keys[pygame.K_p]:
+                self.toggle_pause()
+            
             if keys[pygame.K_RETURN]:
                 collided_interaction_sprite = pygame.sprite.spritecollide(self,self.interaction,False)
                 if collided_interaction_sprite:

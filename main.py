@@ -5,7 +5,8 @@ from level import Level
 class Game:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT)) 
+        RES = (1280,720)
+        self.screen = pygame.display.set_mode(RES, pygame.SCALED | pygame.RESIZABLE) 
         pygame.display.set_caption('PYDEW VALLEY BABY!')
         self.clock = pygame.time.Clock()
         self.level = Level()
