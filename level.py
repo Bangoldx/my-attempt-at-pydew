@@ -159,14 +159,10 @@ class Level:
         self.all_sprites.custom_draw(self.player)
 
         # updates
-        if self.pause_active:
-            self.pause.update()
-        else:
-            self.all_sprites.update(dt)
-            self.plant_collision()
-
         if self.shop_active:
             self.menu.update()
+        if self.pause_active:
+            self.pause.update()
         else:
             self.all_sprites.update(dt)
             self.plant_collision()

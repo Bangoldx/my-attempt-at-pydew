@@ -57,10 +57,9 @@ class Player(pygame.sprite.Sprite):
         self.money = 200
 
         # pause screen options
-        self.quit = {
-            'Quit': pygame.QUIT
+        self.quit_game = {
+        'Quit': pygame.QUIT
         }
-
 
         # interation
         self.tree_sprites = tree_sprites

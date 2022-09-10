@@ -1,6 +1,7 @@
 import pygame
 from settings import *
 from timer import Timer
+from player import Player
 
 class Menu:
     def __init__(self, player, toggle_menu):
@@ -132,7 +133,77 @@ class Pause:
         self.player = player
         self.toggle_pause = toggle_pause
         self.display_surface = pygame.display.get_surface()
-        self.font = pygame.font.Font('../font/LycheeSoda.ttf', 30)
+        self.font = pygame.font.Font('../font/LycheeSoda.ttf', 50)
 
-    def update(self,):
-        self.display_surface.blit(pygame.Surface((1000,1000)),(0,0))
+        # options
+        self.width = 400
+        self.space = 10
+        self.padding = 8
+
+        # entries
+        self.options = list(self.player.quit_game.keys())
+        self.setup()
+
+        # movement
+        self.index = 0
+        self.timer = Timer(200)
+
+    def setup(self):
+        self.text_surfs = []
+        self.total_height = 0
+
+        for item in self.options:
+            text_surf = self.font.render(item,False, 'Black')
+            self.text_surfs.append(text_surf)
+            self.total_height += text_surf.get_height() + (self.padding * 2)
+
+        self.total_height += (len(self.text_surfs) - 1) * self.space
+        self.pause_top = SCREEN_HEIGHT / 2 - self.total_height / 2
+        self.main_rect = pygame.Rect(SCREEN_WIDTH / 2 - self.width / 2,self.pause_top,self.width,self.total_height)
+
+    def input(self):
+        keys = pygame.key.get_pressed()
+        self.timer.update()
+
+        if keys[pygame.K_ESCAPE]:
+            self.toggle_pause()
+
+        if not self.timer.active:
+            if keys[pygame.K_UP]:
+                self.index -= 1
+                self.timer.activate()
+
+            if keys[pygame.K_DOWN]:
+                self.index += 1
+                self.timer.activate()
+
+            if keys[pygame.K_SPACE]:
+                self.timer.activate()
+                current_item = self.options[self.index]
+
+
+        # clamp values
+        if self.index < 0:
+            self.index = len(self.options) - 1
+        if self.index > len(self.options) - 1:
+            self.index = 0
+
+    def show_entry(self, text_surf, top, selected):
+        
+        #background
+        bg_rect = pygame.Rect(self.main_rect.left,top,self.width,text_surf.get_height() + self.padding * 2)
+        pygame.draw.rect(self.display_surface, 'White',bg_rect, 0,4)
+
+        #text
+        text_rect = text_surf.get_rect(midleft = (self.main_rect.left + 20,bg_rect.centery))
+        self.display_surface.blit(text_surf, text_rect)
+    
+        # selected
+        if selected:
+            pygame.draw.rect(self.display_surface,'black',bg_rect,4,4)
+    
+    def update(self):
+        self.input()
+        for text_index, text_surf in enumerate(self.text_surfs):
+            top = self.main_rect.top + text_index * (text_surf.get_height() + (self.padding * 2) + self.space)
+            self.show_entry(text_surf, top, self.index == text_index)
