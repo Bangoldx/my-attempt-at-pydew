@@ -180,13 +180,14 @@ class Pause:
             if keys[pygame.K_SPACE]:
                 self.timer.activate()
                 current_item = self.options[self.index]
+                
+                if self.player.quit_game[current_item] > 0:
 
-
-        # clamp values
-        if self.index < 0:
-            self.index = len(self.options) - 1
-        if self.index > len(self.options) - 1:
-            self.index = 0
+                    # clamp values
+                    if self.index < 0:
+                        self.index = len(self.options) - 1
+                    if self.index > len(self.options) - 1:
+                        self.index = 0
 
     def show_entry(self, text_surf, top, selected):
         

@@ -161,11 +161,11 @@ class Level:
         # updates
         if self.shop_active:
             self.menu.update()
-        if self.pause_active:
-            self.pause.update()
         else:
             self.all_sprites.update(dt)
             self.plant_collision()
+        if self.pause_active:
+            self.pause.update()
 
 
         # weather

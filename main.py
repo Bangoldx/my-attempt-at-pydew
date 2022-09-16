@@ -7,7 +7,7 @@ class Game:
         pygame.init()
         RES = (1280,720)
         self.screen = pygame.display.set_mode(RES, pygame.SCALED | pygame.RESIZABLE) 
-        pygame.display.set_caption('PYDEW VALLEY BABY!')
+        pygame.display.set_caption('Pydew Valley')
         self.clock = pygame.time.Clock()
         self.level = Level()
 
